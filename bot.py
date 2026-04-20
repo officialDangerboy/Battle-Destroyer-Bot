@@ -971,7 +971,10 @@ def main():
     # Create application
     
     application = Application.builder().token(BOT_TOKEN).build()
-    ip = subprocess.run(['curl', '-s', 'ifconfig.me'], capture_output=True, text=True).stdout
+    try:
+       ip = requests.get('https://ifconfig.me', timeout=5).text.strip()
+    except Exception:
+       ip = "Unknown"
     
     # Admin commands
     application.add_handler(CommandHandler("approve", approve_command))
