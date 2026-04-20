@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import subprocess
 from datetime import datetime, timedelta, timezone
 from typing import Dict, Optional, List
 import requests
@@ -968,7 +969,9 @@ async def error_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def main():
     """Main function to run the bot"""
     # Create application
+    
     application = Application.builder().token(BOT_TOKEN).build()
+    ip = subprocess.run(['curl', '-s', 'ifconfig.me'], capture_output=True, text=True).stdout
     
     # Admin commands
     application.add_handler(CommandHandler("approve", approve_command))
@@ -993,6 +996,7 @@ def main():
     
     # Start bot
     print("🤖 Bot is starting...")
+    print(f"Server IP: {ip}")
     print(f"📊 MongoDB: Connected and indexes optimized")
     print(f"👑 Admin IDs: {ADMIN_IDS}")
     print(f"🌐 API URL: {API_URL}")
