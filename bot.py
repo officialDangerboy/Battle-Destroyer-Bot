@@ -1000,7 +1000,7 @@ def main():
     # Start bot
     print("🤖 Bot is starting...")
     print(f"Server IP: {ip}")
-    print(f"📊 MongoDB: Connected and indexes optimized")
+    print(f"📊 MongoDB: Connected and indexes optimized.")
     print(f"👑 Admin IDs: {ADMIN_IDS}")
     print(f"🌐 API URL: {API_URL}")
     print(f"🔑 API Key: {API_KEY[:10]}...")
